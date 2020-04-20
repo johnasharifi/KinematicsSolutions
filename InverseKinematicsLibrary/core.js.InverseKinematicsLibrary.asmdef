@@ -1,0 +1,14 @@
+{
+    "name": "core.js.InverseKinematicsLibrary",
+    "references": [
+        "GUID:4bf88d25371b6cb42ad83fb1f440880a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
