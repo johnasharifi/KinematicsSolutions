@@ -28,7 +28,6 @@ public class IKNode : MonoBehaviour
     [SerializeField] private Vector3 minSpread;
     [SerializeField] private Vector3 maxSpread;
 
-    private float tardation = 0.1f;
     private const float proximityPenaltyThreshold = 10.0f;
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     
@@ -66,10 +65,7 @@ public class IKNode : MonoBehaviour
         UnityEditor.EditorApplication.update -= Solve;
 #endif
     }
-
-    [SerializeField] private Vector3[] records = new Vector3[3];
-    int recordInd = 0;
-
+    
     public void Solve()
     {
         // update and Editor loop.update both call Solve
@@ -87,7 +83,6 @@ public class IKNode : MonoBehaviour
                 {
                     // generate a nonsense vector when at zero-magnitude error
                     // because we cannot calculate a Quaternion.LookRotation for a zero-magnitude vector
-                    // tardation will dampen sufficiently when next to target
                     maxIntervention = Vector3.one;
                 }
                 maxIntervention.Normalize();
@@ -105,17 +100,13 @@ public class IKNode : MonoBehaviour
                     eulerSpread(localRotation.eulerAngles.y, minSpread.y, maxSpread.y),
                     eulerSpread(localRotation.eulerAngles.z, minSpread.z, maxSpread.z)
                     );
-
+                
                 localRotation = Quaternion.Euler(clampedEuler);
-  
+
                 // leak rate is HZ at an instant when playing / when FPS is calculable, 1 / 60 otherwise
                 float dt = (Application.isPlaying ? Time.deltaTime : 0.016f);
                 Quaternion leak = qres.Exchange(localRotation, dt);
                 transform.localRotation = leak;
-
-                // dampen motion when already effectively touching target
-                tardation = Mathf.Min(1.0f, intervention.magnitude / proximityPenaltyThreshold);
-
             }
         }
     }
