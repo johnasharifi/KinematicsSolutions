@@ -28,10 +28,9 @@ public class IKManager : MonoBehaviour
         {
             SetNodesOperational(true);
         }
-        else if (_solveMode == SolveMode.runtime && Application.isPlaying)
+        else if (_solveMode == SolveMode.runtime)
         {
-            
-            SetNodesOperational(true);
+            SetNodesOperational(Application.isPlaying);
         }
         else if (_solveMode == SolveMode.disabled)
         {
