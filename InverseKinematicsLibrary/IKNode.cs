@@ -28,6 +28,8 @@ public class IKNode : MonoBehaviour
     [SerializeField] private Vector3 minSpread;
     [SerializeField] private Vector3 maxSpread;
 
+    [SerializeField] private float distanceDampener;
+
     private const float proximityPenaltyThreshold = 10.0f;
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     
@@ -73,11 +75,12 @@ public class IKNode : MonoBehaviour
         // TODO in editor, check if editor is paused
         if (solving)
         {
-
             if (target != null)
             {
                 Vector3 intervention = (target.position - GetTerminus());
                 Vector3 maxIntervention = intervention;
+
+                distanceDampener = Mathf.Clamp(intervention.sqrMagnitude, 0.01f, 0.5f);
 
                 if (maxIntervention.sqrMagnitude < 1E-4)
                 {
@@ -87,7 +90,7 @@ public class IKNode : MonoBehaviour
                 }
                 maxIntervention.Normalize();
                 
-                Quaternion rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(maxIntervention), 2.0f * Mathf.PI);
+                Quaternion rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(maxIntervention), distanceDampener * Mathf.PI);
                 Quaternion localRotation = Quaternion.Inverse(transform.parent.rotation) * rotation;
                 
                 System.Func<float, float, float, float> eulerSpread = (float v, float bound1, float bound2) =>
