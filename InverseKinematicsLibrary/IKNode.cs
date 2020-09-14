@@ -126,7 +126,7 @@ public class IKNode : MonoBehaviour
 
     private float GetMagnitude()
     {
-        // hardwire to create a mesh that spans to next node
+        // hardwire to create a vector that spans to next node
         if (childNode != null)
         {
             return childNode.transform.localPosition.z;
