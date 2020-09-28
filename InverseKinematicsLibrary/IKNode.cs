@@ -32,7 +32,8 @@ public class IKNode : MonoBehaviour
 
     private const float proximityPenaltyThreshold = 10.0f;
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
-    
+    const float maxDampDistance = 0.5f;
+
     private void Update()
     {
         if (Application.isPlaying && solving)
@@ -80,8 +81,8 @@ public class IKNode : MonoBehaviour
                 Vector3 intervention = (target.position - GetTerminus());
                 Vector3 maxIntervention = intervention;
 
-                distanceDampener = Mathf.Clamp(intervention.sqrMagnitude, 0.01f, 0.5f);
-
+                distanceDampener = Mathf.Pow(Mathf.Clamp(intervention.sqrMagnitude, 0.01f, maxDampDistance) / maxDampDistance, 2.0f);
+                
                 if (maxIntervention.sqrMagnitude < 1E-4)
                 {
                     // generate a nonsense vector when at zero-magnitude error
