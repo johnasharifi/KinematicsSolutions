@@ -30,6 +30,7 @@ public class IKNode : MonoBehaviour
     
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     const float maxDampDistance = 15f;
+    const float echoRate = 0.5f;
     const float rotationOverTimePenalty = 0.5f;
 
     private void Update()
@@ -92,6 +93,9 @@ public class IKNode : MonoBehaviour
                 Quaternion rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(maxIntervention), distanceDampener * Mathf.PI * rotationOverTimePenalty);
                 Quaternion localRotation = Quaternion.Inverse(transform.parent.rotation) * rotation;
                 
+                // extent to which child segments retrieve error from parents. 0 to ignore parent localRotation
+                localRotation = Quaternion.Lerp(localRotation, transform.parent.localRotation, echoRate * Time.deltaTime);
+
                 System.Func<float, float, float, float> eulerSpread = (float v, float bound1, float bound2) =>
                 {
                     return Mathf.Clamp(v > 180f? v - 360f: v, Mathf.Min(bound1, bound2), Mathf.Max(bound1, bound2));
