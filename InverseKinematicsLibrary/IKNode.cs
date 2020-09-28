@@ -80,7 +80,7 @@ public class IKNode : MonoBehaviour
                 Vector3 intervention = (target.position - GetTerminus());
                 Vector3 maxIntervention = intervention;
 
-                float distanceDampener = Mathf.Pow(Mathf.Clamp(intervention.sqrMagnitude, 0.01f, maxDampDistance) / maxDampDistance, 2.0f);
+                float distanceDampener = Mathf.Pow(Mathf.Clamp(intervention.sqrMagnitude, 0.01f, maxDampDistance) / maxDampDistance, 0.5f);
                 
                 if (maxIntervention.sqrMagnitude < 1E-4)
                 {
