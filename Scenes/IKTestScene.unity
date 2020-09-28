@@ -170,7 +170,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &124725994
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -267,7 +266,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &131262619
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -466,7 +464,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &200493730
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -563,7 +560,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &251308419
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -659,7 +655,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &384888631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -792,7 +787,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397407339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1191,7 +1186,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &606814410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1408,7 +1402,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &873666638
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1617,7 +1610,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1735,7 +1728,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &1201400753
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1832,7 +1824,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &1354152270
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2133,7 +2124,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &1453197894
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2721,7 +2711,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &1701643350
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2818,7 +2807,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &1720585046
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3114,7 +3102,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &1911500172
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3286,7 +3273,6 @@ MonoBehaviour:
   solving: 0
   minSpread: {x: -90, y: -90, z: -90}
   maxSpread: {x: 90, y: 90, z: 90}
-  distanceDampener: 0
 --- !u!23 &1974532925
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3493,7 +3479,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 30
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
