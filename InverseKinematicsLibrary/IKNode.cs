@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Linq;
 using KinematicsLibrary;
 
-[ExecuteAlways]
 public class IKNode : MonoBehaviour
 {
     private IKNode parentNode;
@@ -35,19 +34,12 @@ public class IKNode : MonoBehaviour
 
     private void Update()
     {
-        if (Application.isPlaying && solving)
-        {
-            Solve();
-        }
+        Solve();
     }
     private void OnEnable()
     {
         parentNode = transform.parent.GetComponent<IKNode>();
         childNode = GetChildNodeOrNull();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.update += Solve;
-#endif
     }
 
     private void OnTransformChildrenChanged()
@@ -61,13 +53,6 @@ public class IKNode : MonoBehaviour
         return transform.GetComponentsInChildren<IKNode>().Except(new[] { this }).FirstOrDefault();
     }
 
-    private void OnDisable()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.update -= Solve;
-#endif
-    }
-    
     public void Solve()
     {
         // update and Editor loop.update both call Solve

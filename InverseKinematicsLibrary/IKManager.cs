@@ -7,7 +7,7 @@ public class IKManager : MonoBehaviour
 {
     private HashSet<IKNode> nodes = new HashSet<IKNode>();
 
-    public enum SolveMode { runtime, instant, disabled, step};
+    public enum SolveMode { runtime, disabled, step};
     [SerializeField] private SolveMode _solveMode;
 
     /// <summary>
@@ -24,11 +24,7 @@ public class IKManager : MonoBehaviour
         _solveMode = updatedSolveMode;
 
         UpdateNodeSet();
-        if (_solveMode == SolveMode.instant)
-        {
-            SetNodesOperational(true);
-        }
-        else if (_solveMode == SolveMode.runtime)
+        if (_solveMode == SolveMode.runtime)
         {
             SetNodesOperational(Application.isPlaying);
         }
