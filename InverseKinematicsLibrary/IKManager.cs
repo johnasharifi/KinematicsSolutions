@@ -16,17 +16,15 @@ public class IKManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        UpdateSolveMode(SolveMode.runtime);
+        UpdateSolveModeOnNodes();
     }
 
-    public void UpdateSolveMode(SolveMode updatedSolveMode)
+    public void UpdateSolveModeOnNodes()
     {
-        _solveMode = updatedSolveMode;
-
         UpdateNodeSet();
         if (_solveMode == SolveMode.runtime)
         {
-            SetNodesOperational(Application.isPlaying);
+            SetNodesOperational(true);
         }
         else if (_solveMode == SolveMode.disabled)
         {
