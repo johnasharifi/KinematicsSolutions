@@ -29,7 +29,7 @@ public class IKNode : MonoBehaviour
     
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     const float maxDampDistance = 15f;
-    const float echoRate = 0.5f;
+    const float echoRate = 0.1f;
     const float rotationOverTimePenalty = 0.5f;
 
     private void Update()
