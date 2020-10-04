@@ -24,13 +24,21 @@ public class IKManagerEditor : Editor
         {
             EditorGUILayout.PropertyField(solveMode);
         }
+        
+        if (solveMode.enumValueIndex == (int) IKManager.SolveMode.step)
+        {
+            EditorGUI.BeginDisabledGroup(!Application.isPlaying);
+            if (GUILayout.Button("Step"))
+                ((IKManager)serializedObject.targetObject).UpdateSolveModeOnNodes();
+            EditorGUI.EndDisabledGroup();
+        }
+        
+        serializedObject.ApplyModifiedProperties();
 
         if (EditorGUI.EndChangeCheck())
         {
-            ((IKManager)target).UpdateSolveMode((IKManager.SolveMode) solveMode.enumValueIndex);
+            ((IKManager)target).UpdateSolveModeOnNodes();
         }
-
-        serializedObject.ApplyModifiedProperties();
     }
 }
 
