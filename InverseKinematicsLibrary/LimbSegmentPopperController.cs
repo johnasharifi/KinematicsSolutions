@@ -36,6 +36,12 @@ public class LimbSegmentPopperController : MonoBehaviour
                     childNode.transform.SetParent(node.transform);
                     childNode.transform.localPosition = node.transform.localPosition;
                 }
+
+                // if user didn't left click AND did right click, delete last node
+                else if (node != null && rmb)
+                {
+                    Destroy(node.transform.gameObject);
+                }
             }
         }
     }
