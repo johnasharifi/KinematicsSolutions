@@ -6,7 +6,6 @@ using KinematicsLibrary;
 
 public class IKNode : MonoBehaviour
 {
-    private IKNode parentNode;
     public IKNode childNode { get; private set; }
 
     public Transform target;
@@ -38,7 +37,6 @@ public class IKNode : MonoBehaviour
     }
     private void OnEnable()
     {
-        parentNode = transform.parent.GetComponent<IKNode>();
         childNode = GetChildNodeOrNull();
     }
 
