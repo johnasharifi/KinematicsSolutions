@@ -2396,8 +2396,8 @@ MonoBehaviour:
   m_Text: 'Move the sliders on the left to move the target sphere.
 
 
-    The simulated limb will use inverse kinematic equations to try to compute a series
-    of rotations to touch the target sphere.'
+    The simulated limb will use inverse kinematic equations to compute node rotations
+    necessary to touch the target sphere.'
 --- !u!222 &1523810937
 CanvasRenderer:
   m_ObjectHideFlags: 0
