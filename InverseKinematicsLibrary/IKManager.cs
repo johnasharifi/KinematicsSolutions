@@ -50,7 +50,7 @@ public class IKManager : MonoBehaviour
     {
         foreach (IKNode n in nodes)
         {
-            n.isSolving = status;
+            n.enabled = status;
         }
     }
 

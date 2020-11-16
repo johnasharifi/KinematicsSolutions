@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &124725994
@@ -279,7 +278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &131262619
@@ -492,7 +490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &200493730
@@ -603,7 +600,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &251308419
@@ -713,7 +709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &384888631
@@ -1259,7 +1254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &606814410
@@ -1490,7 +1484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &873666638
@@ -1700,7 +1693,7 @@ Camera:
   m_GameObject: {fileID: 1088630613}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1844,7 +1837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &1201400753
@@ -1955,7 +1947,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &1354152270
@@ -2270,7 +2261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &1453197894
@@ -2333,6 +2323,89 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 2119974832}
+--- !u!1 &1523810934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1523810935}
+  - component: {fileID: 1523810937}
+  - component: {fileID: 1523810936}
+  m_Layer: 5
+  m_Name: OnscreenCues
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1523810935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523810934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1700795851}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -100, y: 157.15}
+  m_SizeDelta: {x: 400, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1523810936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523810934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Move the sliders on the left to move the target sphere.
+
+
+    The simulated limb will use inverse kinematic equations to compute node rotations
+    necessary to touch the target sphere.'
+--- !u!222 &1523810937
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523810934}
+  m_CullTransparentMesh: 0
 --- !u!1 &1529944287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2876,7 @@ RectTransform:
   - {fileID: 510854458}
   - {fileID: 154677760}
   - {fileID: 2045355261}
+  - {fileID: 1523810935}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2872,7 +2946,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &1701643350
@@ -2983,7 +3056,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &1720585046
@@ -3293,7 +3365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &1911500172
@@ -3479,7 +3550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 397407343}
-  solving: 0
   minSpread: {x: -45, y: -45, z: -45}
   maxSpread: {x: 45, y: 45, z: 45}
 --- !u!23 &1974532925
