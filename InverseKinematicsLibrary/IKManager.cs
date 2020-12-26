@@ -41,6 +41,27 @@ public class IKManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Dirty implementation of target overriding for each IKNode which this IKManager might manage.
+    /// </summary>
+    public Transform limbTarget
+    {
+        set
+        {
+            UpdateNodeSet();
+            foreach (IKNode node in nodes)
+            {
+                node.target = value;
+            }
+        }
+        get
+        {
+            if (nodes != null && nodes.Count > 0)
+                return nodes.FirstOrDefault().target;
+            return null;
+        }
+    }
+
     void UpdateNodeSet()
     {
         nodes = new HashSet<IKNode>(transform.GetComponentsInChildren<IKNode>());
