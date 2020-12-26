@@ -15,8 +15,8 @@ public class IKNode : MonoBehaviour
     
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     const float maxDampDistance = 15f;
-    const float echoRate = 0.1f;
-    const float rotationOverTimePenalty = 0.5f;
+    const float rotationSpeed = 135.0f;
+    const float wigglingEnabled = 1.0f;
 
     private void Update()
     {
@@ -55,12 +55,9 @@ public class IKNode : MonoBehaviour
             }
             maxIntervention.Normalize();
                 
-            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(maxIntervention), distanceDampener * Mathf.PI * rotationOverTimePenalty);
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(maxIntervention), distanceDampener * rotationSpeed * Time.deltaTime);
             Quaternion localRotation = Quaternion.Inverse(transform.parent.rotation) * rotation;
                 
-            // extent to which child segments retrieve error from parents. 0 to ignore parent localRotation
-            localRotation = Quaternion.Lerp(localRotation, transform.parent.localRotation, echoRate * Time.deltaTime);
-
             System.Func<float, float, float, float> eulerSpread = (float v, float bound1, float bound2) =>
             {
                 return Mathf.Clamp(v > 180f? v - 360f: v, Mathf.Min(bound1, bound2), Mathf.Max(bound1, bound2));
@@ -74,9 +71,9 @@ public class IKNode : MonoBehaviour
                 
             localRotation = Quaternion.Euler(clampedEuler);
 
-            // leak rate is HZ at an instant when playing / when FPS is calculable, 1 / 60 otherwise
-            float dt = (Application.isPlaying ? Time.deltaTime : 0.016f);
-            Quaternion leak = qres.Exchange(localRotation, dt);
+            // add mild wiggling when close or far from target
+            localRotation = Quaternion.Lerp(localRotation, Quaternion.Inverse(localRotation), wigglingEnabled * Time.deltaTime * Mathf.Abs(0.5f - distanceDampener));
+            Quaternion leak = qres.Exchange(localRotation, Time.deltaTime);
             transform.localRotation = leak;
         }
     }
