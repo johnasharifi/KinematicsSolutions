@@ -15,8 +15,9 @@ public class IKNode : MonoBehaviour
     
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     const float maxDampDistance = 15f;
-    const float rotationSpeed = 135.0f;
+    const float rotationSpeed = 60.0f;
     const float wigglingEnabled = 1.0f;
+    const int rotationStickiness = 64;
 
     private void Update()
     {
@@ -73,12 +74,14 @@ public class IKNode : MonoBehaviour
 
             // add mild wiggling when close or far from target
             localRotation = Quaternion.Lerp(localRotation, Quaternion.Inverse(localRotation), wigglingEnabled * Time.deltaTime * Mathf.Abs(0.5f - distanceDampener));
-            Quaternion leak = qres.Exchange(localRotation, Time.deltaTime);
+
+            float exchangeRate = Mathf.Clamp(Mathf.Pow(1.0f - Time.deltaTime, rotationStickiness), 1E-5f, 1.0f);
+            Quaternion leak = qres.Exchange(localRotation, exchangeRate);
             transform.localRotation = leak;
         }
     }
 
-    Vector3 GetTerminus()
+    public Vector3 GetTerminus()
     {
         if (childNode != null)
         {

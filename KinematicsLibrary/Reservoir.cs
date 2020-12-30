@@ -38,7 +38,7 @@ namespace KinematicsLibrary
 
         public override Quaternion Exchange(Quaternion delta, float dT)
         {
-            reservoir = Quaternion.Lerp(reservoir, delta, stability);
+            reservoir = Quaternion.Lerp(reservoir, delta, dT);
             return (reservoir);
         }
     }
