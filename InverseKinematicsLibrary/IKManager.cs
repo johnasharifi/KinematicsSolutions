@@ -13,6 +13,8 @@ public class IKManager : MonoBehaviour
     public enum SolveMode { runtime, disabled, step};
     [SerializeField] private SolveMode _solveMode;
 
+    [SerializeField] private bool nodesCanSway = true;
+
     /// <summary>
     /// Runs after play starts.
     /// Doesn't run in edit mode.
@@ -128,5 +130,19 @@ public class IKManager : MonoBehaviour
         }
     }
 
-
+    public bool NodesCanSway
+    {
+        get
+        {
+            return nodesCanSway;
+        }
+        set
+        {
+            nodesCanSway = value;
+            foreach (IKNode n in nodes)
+            {
+                n.sway = System.Convert.ToSingle(nodesCanSway) * 1.0f;
+            }
+        }
+    }
 }
