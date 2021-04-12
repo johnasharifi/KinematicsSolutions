@@ -39,6 +39,16 @@ public class IKManagerEditor : Editor
         {
             ((IKManager)target).UpdateSolveModeOnNodes();
         }
+
+        EditorGUI.BeginChangeCheck();
+
+        bool nodesCanSway = GUILayout.Toggle(((IKManager)target).NodesCanSway, "Nodes can sway?");
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            // trigger IKManager -> IKNode set
+            ((IKManager)target).NodesCanSway = nodesCanSway;
+        }
     }
 }
 
