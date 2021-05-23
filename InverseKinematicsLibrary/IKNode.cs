@@ -16,20 +16,7 @@ public class IKNode : MonoBehaviour
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     const float maxDampDistance = 15f;
     const float rotationSpeed = 120.0f;
-    float _sway = 1.0f;
     const int rotationStickiness = 64;
-
-    public float sway
-    {
-        get
-        {
-            return _sway;
-        }
-        set
-        {
-            _sway = Mathf.Clamp01(value);
-        }
-    }
 
     private void Update()
     {
@@ -83,10 +70,7 @@ public class IKNode : MonoBehaviour
                 );
                 
             localRotation = Quaternion.Euler(clampedEuler);
-
-            // add mild wiggling when close or far from target
-            localRotation = Quaternion.Lerp(localRotation, Quaternion.Inverse(localRotation), sway * Time.deltaTime * Mathf.Abs(0.5f - distanceDampener));
-
+			
             float exchangeRate = Mathf.Clamp(Mathf.Pow(1.0f - Time.deltaTime, rotationStickiness), 1E-5f, 1.0f);
             Quaternion leak = qres.Exchange(localRotation, exchangeRate * distanceDampener * rotationSpeed * Time.deltaTime);
             transform.localRotation = leak;

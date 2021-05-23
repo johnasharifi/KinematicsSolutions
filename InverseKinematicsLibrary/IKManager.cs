@@ -129,20 +129,4 @@ public class IKManager : MonoBehaviour
             n.enabled = status;
         }
     }
-
-    public bool NodesCanSway
-    {
-        get
-        {
-            return nodesCanSway;
-        }
-        set
-        {
-            nodesCanSway = value;
-            foreach (IKNode n in nodes)
-            {
-                n.sway = System.Convert.ToSingle(nodesCanSway) * 1.0f;
-            }
-        }
-    }
 }
