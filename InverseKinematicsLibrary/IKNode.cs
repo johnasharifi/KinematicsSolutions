@@ -99,6 +99,17 @@ public class IKNode : MonoBehaviour
         }
         return Mathf.Max(transform.localScale.z, transform.localPosition.z);
     }
+
+	/// <summary>
+	/// Update the node's min and max angule values
+	/// </summary>
+	/// <param name="minAngles">Min angle rotation about XYZ axes that this node can take while trying to touch the target</param>
+	/// <param name="maxAngles">Max angle rotation about XYZ axes that this node can take while trying to touch the target</param>
+	public void SetMinMaxAngles(Vector3 minAngles, Vector3 maxAngles) 
+	{
+		minSpread = minAngles;
+		maxSpread = maxAngles;
+	}
     
     [ContextMenu("Rebuild mesh")]
     private void RebuildMesh()
