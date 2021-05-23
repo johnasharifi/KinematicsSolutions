@@ -15,21 +15,8 @@ public class IKNode : MonoBehaviour
     
     private QuaternionReservoir qres = new QuaternionReservoir(1.0f);
     const float maxDampDistance = 15f;
-    const float rotationSpeed = 60.0f;
-    float _sway = 1.0f;
+    const float rotationSpeed = 120.0f;
     const int rotationStickiness = 64;
-
-    public float sway
-    {
-        get
-        {
-            return _sway;
-        }
-        set
-        {
-            _sway = Mathf.Clamp01(value);
-        }
-    }
 
     private void Update()
     {
@@ -83,12 +70,9 @@ public class IKNode : MonoBehaviour
                 );
                 
             localRotation = Quaternion.Euler(clampedEuler);
-
-            // add mild wiggling when close or far from target
-            localRotation = Quaternion.Lerp(localRotation, Quaternion.Inverse(localRotation), sway * Time.deltaTime * Mathf.Abs(0.5f - distanceDampener));
-
+			
             float exchangeRate = Mathf.Clamp(Mathf.Pow(1.0f - Time.deltaTime, rotationStickiness), 1E-5f, 1.0f);
-            Quaternion leak = qres.Exchange(localRotation, exchangeRate);
+            Quaternion leak = qres.Exchange(localRotation, exchangeRate * distanceDampener * rotationSpeed * Time.deltaTime);
             transform.localRotation = leak;
         }
     }
@@ -115,6 +99,17 @@ public class IKNode : MonoBehaviour
         }
         return Mathf.Max(transform.localScale.z, transform.localPosition.z);
     }
+
+	/// <summary>
+	/// Update the node's min and max angule values
+	/// </summary>
+	/// <param name="minAngles">Min angle rotation about XYZ axes that this node can take while trying to touch the target</param>
+	/// <param name="maxAngles">Max angle rotation about XYZ axes that this node can take while trying to touch the target</param>
+	public void SetMinMaxAngles(Vector3 minAngles, Vector3 maxAngles) 
+	{
+		minSpread = minAngles;
+		maxSpread = maxAngles;
+	}
     
     [ContextMenu("Rebuild mesh")]
     private void RebuildMesh()

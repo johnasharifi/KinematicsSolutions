@@ -130,19 +130,16 @@ public class IKManager : MonoBehaviour
         }
     }
 
-    public bool NodesCanSway
-    {
-        get
-        {
-            return nodesCanSway;
-        }
-        set
-        {
-            nodesCanSway = value;
-            foreach (IKNode n in nodes)
-            {
-                n.sway = System.Convert.ToSingle(nodesCanSway) * 1.0f;
-            }
-        }
-    }
+	public void SetNodeMaxAngle(float value) 
+	{
+		UpdateNodeSet();
+
+		const float maxAngleSpan = 180f;
+		value = Mathf.Clamp(Mathf.Abs(value), 0, maxAngleSpan);
+		Vector3 maxAngle = new Vector3(value, value, value);
+		Vector3 minAngle = maxAngle * -1f;
+		foreach (IKNode node in nodes) {
+			node.SetMinMaxAngles(minAngle, maxAngle);
+		}
+	}
 }
